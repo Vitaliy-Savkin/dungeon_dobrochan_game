@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<units>
+
+  <unit typeName="skeleton warrior">
+    <data name="Скелет-воин" image="SkeletonWarrior60" bigImage="SkeletonWarrior250" >Сухие, старые кости шевелятся, когда в глазницах давно погибшего война загорается желтый огонь. Может показаться, что со светом в пещерах лучше. Может и так. Во всяком случае видно, от кого бежать.</data>
+    <params lvl="2" str="8" stam="7" agi="7" sens="7" will="1" />
+    <skills melee="0.9" range="0.9" dodge="0.8" tactic="0.7" magic="0.5" control="0.5" concent="0.5" />
+    <attributes size="2" race="undead" melee="hands" movement="ground"  />
+    <features>
+    </features>
+  </unit>
+
+</units>
