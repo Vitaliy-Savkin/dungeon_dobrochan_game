@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<!-- GAMEPLAY -->
+
+  <!-- Main battle screen controls -->
+  <resource type="image" id="BATTLE_SCREEN_SHORT_MENU">textures\interface\button\ShortMenubutton.png</resource>
+  <resource type="image" id="BATTLE_SCREEN_ICON_SETTINGS">textures\interface\icons\Setting.png</resource>
+  <resource type="image" id="BATTLE_SCREEN_ICON_SAVE">textures\interface\icons\Save.png</resource>
+  <resource type="image" id="BATTLE_SCREEN_ICON_LOAD">textures\interface\icons\Load.png</resource>  
+  <resource type="image" id="BATTLE_SCREEN_ABILITY">textures\interface\icons\Ability.png</resource>
+  <resource type="image" id="BATTLE_SCREEN_MAGIC">textures\interface\icons\Magic.png</resource>
+  <resource type="image" id="BATTLE_SCREEN_WAIT">textures\interface\icons\Wait.png</resource>
+  
+  <!-- Creatures bar -->
+  <resource type="image" id="CREATURES_BAR_BACKGROUND">textures\interface\IndCreatures.png</resource>
+  <resource type="image" id="CREATURES_BAR_PROGRESS">textures\interface\ProgressBar.png</resource>
+
+  <!-- Log control -->
+  <resource type="image" id="LOG_BACKGROUND_MIN">textures\interface\logMin.png</resource>
+  <resource type="image" id="LOG_BACKGROUND_MAX">textures\interface\logMax.png</resource>
+  <resource type="image" id="LOG_BUTTON_MINIMIZE">textures\interface\button\logMin.png</resource>
+  <resource type="image" id="LOG_BUTTON_MAXIMIZE">textures\interface\button\logMax.png</resource>
+  <resource type="image" id="LOG_ARROW">textures\interface\button\Arrow1.png</resource>
+  
+  <!-- background -->
+  <resource type="image" id="WINDOW_BACKGROUND">textures\interface\main_menu\main_menuback1.png</resource>
+  <resource type="image" id="WINDOW_MAIN_MENU_BACK">textures\interface\main_menu\main_menuback1.png</resource>
+  <resource type="image" id="WINDOW_MAIN_MENU_WINDOW">textures\interface\main_menu\MenuWindow.png</resource>
+  <resource type="image" id="WINDOW_LOGO">textures\interface\main_menu\LogoOld.png</resource>
+  <resource type="image" id="WINDOW_BORDER">textures\interface\WindowBorder.png</resource>
+
+  <!-- Battlefield -->
+  <resource type="image" id="BATTLEFIELD_BORDER">textures\back\GridBorder.png</resource>
+  <resource type="image" id="BATTLEFIELD_GRID">textures\back\Grid001.png</resource>
+
+  <resource type="imagelist" id="BATTLEFIELD_ANGULAR_DECORATION">textures\back\AngularDecoration*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_BORDER_DECORATION">textures\back\BorderDecoration*.png</resource>
+
+  <!-- ROCK -->
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_SINGLE">textures\sprites\objects\pr\rock\Single*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_CENTER">textures\sprites\objects\pr\rock\Center*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_EXT_ANGLE">textures\sprites\objects\pr\rock\Ang*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_INT_ANGLE">textures\sprites\objects\pr\rock\ReAng*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_CROSS_ANGLE">textures\sprites\objects\pr\rock\DoubleAng*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_VSIDE">textures\sprites\objects\pr\rock\VSide*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_ROCK_HSIDE">textures\sprites\objects\pr\rock\HSide*.png</resource>
+
+  <!-- WATER -->
+  <resource type="imagelist" id="BATTLEFIELD_WATER_SINGLE">textures\sprites\objects\pr\water\Single*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_CENTER">textures\sprites\objects\pr\water\Center*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_EXT_ANGLE">textures\sprites\objects\pr\water\Ang*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_INT_ANGLE">textures\sprites\objects\pr\water\ReAng*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_CROSS_ANGLE">textures\sprites\objects\pr\water\DoubleAng*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_VSIDE">textures\sprites\objects\pr\water\VSide*.png</resource>
+  <resource type="imagelist" id="BATTLEFIELD_WATER_HSIDE">textures\sprites\objects\pr\water\HSide*.png</resource>
+
+  <!--  -->
+  <resource type="image" id="UNIT_BACKLIGHT">textures\interface\ColorsLightback\Grey.png</resource>
+
+  <!-- cursors -->
+  <resource type="image" id="CURSOR_BACKLIGHT">textures\interface\cursors\backlight.png</resource>
+
+  <resource type="cursor" id="CURSOR_MAIN" hotSpotX="25" hotSpotY="16">textures\interface\cursors\Hand.png</resource>
+  <resource type="cursor" id="CURSOR_DISTANT_ATTACK" hotSpotX="42" hotSpotY="15">textures\interface\cursors\DistantAttack.png</resource>
+  <resource type="cursor" id="CURSOR_MAGIC" hotSpotX="15" hotSpotY="15">textures\interface\cursors\Magic.png</resource>
+  <resource type="cursor" id="CURSOR_FLY" hotSpotX="25" hotSpotY="40">textures\interface\cursors\Fly.png</resource>
+  <resource type="cursor" id="CURSOR_MOVE" hotSpotX="24" hotSpotY="37">textures\interface\cursors\Move.png</resource>
+
+
+  <!-- HUD -->
+  <resource type="image" id="MENU_BUTTON_NORMAL">textures\interface\button\LongMenubutton.png</resource>
+  <resource type="image" id="MENU_BUTTON_FOCUSED">textures\interface\button\LongMenubuttonPreLight.png</resource>
+  <resource type="image" id="MENU_BUTTON_PRESSED">textures\interface\button\LongMenubuttonPressed.png</resource>
+  <resource type="image" id="MENU_BUTTON_DISABLED">textures\interface\button\LongMenubuttonInactiv.png</resource>
+
+  <!-- SOUNDS -->
+
+  <!-- PATHS -->
+  <resource type="text" id="UNIT_IMAGE">textures\sprites\creatures\</resource>
+  <resource type="text" id="UNIT_IMAGE_BIG">textures\sprites\creatures250\</resource>
+
+</resources>

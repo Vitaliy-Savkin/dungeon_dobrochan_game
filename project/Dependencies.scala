@@ -2,7 +2,6 @@ import sbt._
 
 object Dependencies {
   val resolutionRepos = Seq(
-    ScalaToolsSnapshots,
     "Typesafe repo"    at "http://repo.typesafe.com/typesafe/releases/",
     "scala-tools repo" at "https://oss.sonatype.org/content/groups/scala-tools/",
     "spray"            at "http://repo.spray.io/"
@@ -15,10 +14,10 @@ object Dependencies {
   def container (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "container")
 
   object V {
-    val scala     = "2.10.1"
-    val akka      = "2.2.0"
+    val scala     = "2.11.2"
+    val akka      = "2.3.6"
     val scalaz    = "7.0.0"
-    val specs2    = "2.0"
+    val scalaTest = "2.2.1"
     val mockito   = "1.9.5"
     val jettyAll  = "9.0.4.v20130625"
     val wcs       = "1.3"
@@ -39,7 +38,7 @@ object Dependencies {
   val akkaTestKit         = "com.typesafe.akka"             %%  "akka-testkit"        % V.akka
   val scalaz              = "org.scalaz"                    %%  "scalaz-core"         % V.scalaz
   val swing               = "org.scala-lang"                %   "scala-swing"         % V.scala
-  val specs2              = "org.specs2"                    %%  "specs2"              % V.specs2
+  val scalaTest           = "org.scalatest"                 %%  "scalatest"           % V.scalaTest
   val mockito             = "org.mockito"                   %   "mockito-core"        % V.mockito
   val jettyAll            = "org.eclipse.jetty.aggregate"   %   "jetty-all"           % V.jettyAll
   val webSockets          = "org.jfarcand"                  %   "wcs"                 % V.wcs
