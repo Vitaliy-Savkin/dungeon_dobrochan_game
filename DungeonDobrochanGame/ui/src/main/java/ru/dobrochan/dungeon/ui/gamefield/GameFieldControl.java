@@ -21,7 +21,7 @@ import ru.dobrochan.dungeon.ui.controls.AbstractControl;
 import ru.dobrochan.dungeon.ui.events.*;
 import ru.dobrochan.dungeon.ui.primitives.Point;
 import ru.dobrochan.dungeon.core.GameField;
-import ru.dobrochan.dungeon.core.IEntity;
+import ru.dobrochan.dungeon.core.Entity;
 
 /**
  * Represents the View of game field.
@@ -57,8 +57,9 @@ public class GameFieldControl extends AbstractControl
 		cellClickedHandler.removeAction(action);
 	}
 	
-	public final void cellClicked(int cellX, int cellY, int mouseButton)	{
-		cellClickedHandler.invoke(this, new CellClickedEventArgs(cellX, cellY, mouseButton));
+	public final void cellClicked(int cellX, int cellY, int mouseButton){
+        if(isAcceptingInput())
+		    cellClickedHandler.invoke(this, new CellClickedEventArgs(cellX, cellY, mouseButton));
 	}
 
 	private static final int gridOffsetX = 98;
@@ -158,17 +159,30 @@ public class GameFieldControl extends AbstractControl
 
 	public int getCellHeight() { return cellHeight; }
 
-	public void addUnitEntity(IEntity entity)
+    public void removeRenderObjects(Entity owner){
+        ArrayList<RenderObject> toRemove = new ArrayList<>();
+        for(RenderObject rObj : renderObjects){
+            if((rObj instanceof EntityRenderObject) && ((EntityRenderObject)rObj).getOwner().equals(owner))
+                toRemove.add(rObj);
+        }
+        renderObjects.removeAll(toRemove);
+    }
+
+	public void addUnitEntity(Entity entity, Point where)
 	{
 		try
 		{
 			EntityMultiRenderObject entityRObj = new EntityMultiRenderObject();
-			entityRObj.setOwner(entity);
+			entityRObj.setOwner(entity, where);
 			BlinkingSubstrateRenderObject blinkRObj = new BlinkingSubstrateRenderObject(
 					new Color(0, 0, 1.0f, 1.2f), new Color(0, 0, 1.0f, 0.3f));
 			SimpleRenderObject sro = new SimpleRenderObject();
-			sro.image = ResourceManager.getInstance().loadImage(
-				(String)entity.getParam("image"), ContentPaths.CREATURES + (String)entity.getParam("image") + ".png");
+			sro.image = ResourceManager.getInstance().loadImage("1",
+                    //(String)entity.getParam("image"),
+                    ContentPaths.CREATURES +
+                            //(String)entity.getParam("image")
+                            "SkeletonWarrior60"
+                            + ".png");
 			entityRObj.addRenderObject(blinkRObj);
 			entityRObj.addRenderObject(sro);
 			addRenderObject(entityRObj);
@@ -179,22 +193,25 @@ public class GameFieldControl extends AbstractControl
 		}
 	}
 
-	public void moveUnitEntity(IEntity entity, Point[] path)
+	public void moveUnitEntity(final Entity entity, final Point from, final Point to)
 	{
-		for (RenderObject rObj : renderObjects)
-		{
-			if (rObj instanceof EntityRenderObject)
-			{
-				IEntity owner = ((EntityRenderObject)rObj).getOwner();
-				if (owner == entity)
-				{
-					removeRenderObject(rObj);
-					MovingEntityRenderObject mrObj = new MovingEntityRenderObject(owner, path);
-					addRenderObject(mrObj);
-					break;
-				}
-			}
-		}
+        removeRenderObjects(entity);
+        final GameFieldControl gfc = this;
+        removeRenderObjects(entity);
+        final MovingEntityRenderObject mrObj = new MovingEntityRenderObject(entity, from, to);
+        mrObj.started = new Runnable(){
+            public void run(){
+                gfc.setEnabled(false);
+            }
+        };
+        mrObj.finished = new Runnable(){
+            public void run(){
+                removeRenderObject(mrObj);
+                gfc.setEnabled(true);
+                addUnitEntity(entity, to);
+            }
+        };
+        addRenderObject(mrObj);
 	}
 
 	/**

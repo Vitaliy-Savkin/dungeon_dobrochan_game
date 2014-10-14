@@ -47,7 +47,7 @@ public class MainMenuState extends GameState
 		{
 			@Override
 			public void execute(AbstractControl sender, MouseClickedEventArgs e) {
-				game.enterState(DungeonDobrochanGame.GAME_STATE);
+				game.enterState(DungeonDobrochanGame.GAME_PROCESS_STATE);
 			}
 		});
 		rootControl.addChild(menu, new Size(10, 10));	

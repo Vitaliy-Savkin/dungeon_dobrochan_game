@@ -27,7 +27,7 @@ public class SimpleRenderObject extends EntityRenderObject
 	@Override
 	public void render(Graphics g)
 	{
-		g.drawImage(image, getOwnerX(), getOwnerY());
+		g.drawImage(image, getOwnerPos().getX(), getOwnerPos().getY());
 	}
 
 }

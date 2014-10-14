@@ -26,7 +26,7 @@ public class DungeonDobrochanGame extends StateBasedGame
 {
 	public static final int MAIN_MENU_STATE = 0;
 	public static final int GAME_POOL_STATE = 1;
-	public static final int GAME_STATE = 2;
+	public static final int GAME_PROCESS_STATE = 2;
 
 	public DungeonDobrochanGame()
 	{
@@ -43,7 +43,7 @@ public class DungeonDobrochanGame extends StateBasedGame
 			is = new FileInputStream("Resources.xml");
 			ResourceManager.getInstance().loadResources(is, true);
 			MainMenuState menu = new MainMenuState(MAIN_MENU_STATE);
-			GameProcessState game = new GameProcessState(GAME_STATE);
+			GameProcessState game = new GameProcessState(GAME_PROCESS_STATE);
 			GamePoolState pool = new GamePoolState(GAME_POOL_STATE);
 			addState(menu);
 			addState(game);

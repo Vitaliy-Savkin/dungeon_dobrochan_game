@@ -75,8 +75,6 @@ public class FieldBackgroundRenderer
 	{
 		ResourceManager rm = ResourceManager.getInstance();
 
-		// Р—Р°РїРѕР»РЅРµРЅРёРµ РєР°СЂС‚ С‚РµРєСЃС‚СѓСЂ.
-		// РЎРєР°Р»Р°.
 		HashMap<Integer, List<Image>> rockMap = new HashMap<Integer, List<Image>>();
 		rockMap.put(SINGLE, rm.getImageList("BATTLEFIELD_ROCK_SINGLE"));
 		rockMap.put(CENTER, rm.getImageList("BATTLEFIELD_ROCK_CENTER"));
@@ -86,7 +84,6 @@ public class FieldBackgroundRenderer
 		rockMap.put(HSIDE, rm.getImageList("BATTLEFIELD_ROCK_HSIDE"));
 		rockMap.put(VSIDE, rm.getImageList("BATTLEFIELD_ROCK_VSIDE"));
 
-		// Р’РѕРґР°.
 		HashMap<Integer, List<Image>> waterMap = new HashMap<Integer, List<Image>>();
 		waterMap.put(SINGLE, rm.getImageList("BATTLEFIELD_WATER_SINGLE"));
 		waterMap.put(CENTER, rm.getImageList("BATTLEFIELD_WATER_CENTER"));
@@ -329,22 +326,16 @@ public class FieldBackgroundRenderer
 
 		int id = gameField.getSurfaceAt(x, y);
 
-		// РџСѓСЃС‚Рѕ? РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј.
 		if (id == Surface.EMPTY())
 			return;
 
-		// РџРѕРґСЃС‡Р=µС‚ СЃРјРµР¶РЅС‹С… Р·Р°РЅСЏС‚С‹С… СЏС‡РµРµРє РґР»СЏ СѓРіРѕР»РєРѕРІ.
-		// РЈРіРѕР»РѕРє - СЏС‡РµР№РєР° РїРѕ РґРёР°РіРѕРЅР°Р»Рё Рё 2 СЃРјРµР¶РЅС‹Рµ СЃ РЅРµР№ РїРѕ Р±РѕРєР°Рј.
-		// lu - LeftUp, rd - RightDown Рё С‚.Рґ.
 		int luC = 0;
 		int ruC = 0;
 		int rdC = 0;
 		int ldC = 0;
 
-		// РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРјРµР¶РЅС‹С… Р·Р°РЅСЏС‚С‹С… СЏС‡РµРµРє.
-		int cellCount = 0;
+        int cellCount = 0;
 
-		// РџСЂРѕРІРµСЂСЏРµРј РїРѕ С‡Р°СЃРѕРІРѕР№ СЃС‚СЂРµР»РєРµ РЅР°С‡РёРЅР°СЏ СЃ Р»РµРІРѕРіРѕ.
 		if (x>0 && gameField.getSurfaceAt(x-1, y) == id)
 		{
 			luC++;
@@ -390,15 +381,12 @@ public class FieldBackgroundRenderer
 			cellCount++;
 		}
 
-		// РђР±СЃРѕР»СЋС‚РЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ СЏС‡РµР№РєРё.
 		int pointX = gridOffsetX + cellWidth * x;
 		int pointY = gridOffsetY + cellHeight * y;
 
-		// Р¦РµРЅС‚СЂР°Р»СЊРЅР°СЏ СЏС‡РµР№РєР°.
 		if (cellCount == 8)
 			drawCenterCell(g, pointX, pointY, id);
 
-		// РџСЂРѕРІРµСЂРєР° СѓРіР»РѕРІ.
 		boolean luB = false;
 		boolean ruB = false;
 		boolean rdB = false;
@@ -426,7 +414,6 @@ public class FieldBackgroundRenderer
 			cornCount++;
 		}
 
-		// Р’РЅСѓС‚СЂРµРЅРЅРёР№ СѓРіРѕР».
 		if (cornCount == 3)
 		{
 			int cornDir = 0;
@@ -443,7 +430,6 @@ public class FieldBackgroundRenderer
 
 		if (cornCount == 2)
 		{
-			// Р‘РѕРєРѕРІСѓС€РєРё.
 			int bordDir = -1;
 			if (ruB && rdB)
 				bordDir = 0;
@@ -457,7 +443,6 @@ public class FieldBackgroundRenderer
 			if (bordDir != -1)
 				drawSideCell(g, pointX, pointY, id, bordDir);
 
-			// Р”РІРѕР№РЅРѕР№ РІРЅСѓС‚СЂРµРЅРЅРёР№ СѓРіРѕР».
 			int angDir = -1;
 			if (luB && rdB)
 				angDir = 0;
@@ -468,7 +453,6 @@ public class FieldBackgroundRenderer
 				drawAngularCell(g, pointX, pointY, id, CROSS_ANGLE ,angDir);
 		}
 
-		// РЈРіРѕР»РѕРє.
 		if (cornCount == 1)
 		{
 			int angDir = 0;
@@ -484,7 +468,6 @@ public class FieldBackgroundRenderer
 			drawAngularCell(g, pointX, pointY, id, EXT_ANGLE, angDir);
 		}
 
-		// РћРґРёРЅРѕС‡РЅС‹Р№.
 		if (cornCount == 0)
 			drawSingleCell(g, pointX, pointY, id);
 	}

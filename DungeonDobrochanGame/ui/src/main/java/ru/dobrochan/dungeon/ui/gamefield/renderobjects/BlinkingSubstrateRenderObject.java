@@ -35,7 +35,7 @@ public class BlinkingSubstrateRenderObject extends EntityRenderObject
 	public void render(Graphics g)
 	{
 		double mix = Math.sin(4*time);
-		g.drawImage(image, getOwnerX(), getOwnerY(), mixColor(color1, color2, mix));
+		g.drawImage(image, getOwnerPos().getX(), getOwnerPos().getY(), mixColor(color1, color2, mix));
 	}
 
 	private static Color mixColor(Color color1, Color color2, double mix)

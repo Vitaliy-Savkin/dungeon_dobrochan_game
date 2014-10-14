@@ -2,7 +2,7 @@
 package ru.dobrochan.dungeon.client.gamestates;
 
 import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import ru.dobrochan.dungeon.core.consts.Surface;
 import ru.dobrochan.dungeon.content.ResourceManager;
+import ru.dobrochan.dungeon.core.units.GameUnit;
 import ru.dobrochan.dungeon.ui.controls.AbstractControl;
 import ru.dobrochan.dungeon.ui.controls.Picture;
 import ru.dobrochan.dungeon.ui.controls.combined.CreaturesBar;
@@ -29,6 +30,7 @@ import ru.dobrochan.dungeon.core.server.*;
 import ru.dobrochan.dungeon.core.actions.queries.MoveQuery;
 import ru.dobrochan.dungeon.core.actions.AbstractAction;
 import ru.dobrochan.dungeon.ui.views.GameProcessView;
+import scala.collection.*;
 
 /**
  *
@@ -38,7 +40,7 @@ public class GameProcessState extends GameState
 {
 
 	public GameProcessState(int id) { super(id); }
-	
+
 	GameProcessModel model;
 	GameProcessView view;
 	
@@ -49,26 +51,29 @@ public class GameProcessState extends GameState
 	private GameField gameField;
 	private GameFieldControl gameFieldControl;
 
-	//private IEntityContainer entitiesContainer;
-
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) throws SlickException
 	{
 		super.enter(container, game);
-		model = new GameProcessModel(gameField, new ru.dobrochan.dungeon.core.units.Skeleton(1, 2, 2));
+
+        // TODO: cleanup java-scala interop code
+        ArrayList<GameUnit> jUnits = new ArrayList<GameUnit>();
+        jUnits.add(new ru.dobrochan.dungeon.core.units.Skeleton(1));
+        scala.collection.Iterable<GameUnit> units = JavaConversions$.MODULE$.iterableAsScalaIterable(jUnits);
+		model = new GameProcessModel(gameField, units);
 		view = new GameProcessView(gameFieldControl);
 		server = new Server(model);
 		connector = new SingleMachineServerConnector(server);
 
 		gameFieldControl.onCellClickedAdd(new CellClickedAction(){
-			@Override 
-			public void execute(AbstractControl sender, CellClickedEventArgs e) {	
+			@Override
+			public void execute(AbstractControl sender, CellClickedEventArgs e) {
 				GameContext context = new GameContext(1, null, model, view);
-				List<AbstractAction> actions = 
-						connector.SendQuery(new MoveQuery(context.id(), 1, e.getCellX(), e.getCellY()));
+				java.lang.Iterable<AbstractAction> actions =
+                        JavaConversions$.MODULE$.asJavaIterable(connector.SendQuery(new MoveQuery(context.id(), 1, e.getCellX(), e.getCellY())));
 				for (AbstractAction action : actions)
-					action.execute(context);				
-			}				
+					action.execute(context);
+			}
 		});
 	}
 	

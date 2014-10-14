@@ -19,7 +19,7 @@ public class EntityMultiRenderObject extends EntityRenderObject
 
 	public void addRenderObject(EntityRenderObject renderObject)
 	{
-		renderObject.setOwner(getOwner());
+		renderObject.setOwner(getOwner(), getOwnerPos());
 		renderObject.setGameFieldView(getGameFieldView());
 		renderObjects.add(renderObject);
 	}

@@ -1,6 +1,7 @@
 package ru.dobrochan.dungeon.ui.gamefield.renderobjects;
 
-import ru.dobrochan.dungeon.core.IEntity;
+import ru.dobrochan.dungeon.core.Entity;
+import ru.dobrochan.dungeon.ui.primitives.Point;
 
 /**
  *
@@ -8,20 +9,18 @@ import ru.dobrochan.dungeon.core.IEntity;
  */
 public abstract class EntityRenderObject extends RenderObject
 {
-	private IEntity owner;
+	private Entity owner;
+	private Point ownerPos;
 
-	private int ownerX;
-	private int ownerY;
+	protected Point getOwnerPos() { return ownerPos; }
 
-	protected int getOwnerX() { return ownerX; }
-	protected int getOwnerY() { return ownerY; }
-
-	public void setOwner(IEntity owner)
+	public void setOwner(Entity owner, Point ownerPos)
 	{
 		this.owner = owner;
+        this.ownerPos = ownerPos;
 	}
 
-	public IEntity getOwner()
+	public Entity getOwner()
 	{
 		return owner;
 	}

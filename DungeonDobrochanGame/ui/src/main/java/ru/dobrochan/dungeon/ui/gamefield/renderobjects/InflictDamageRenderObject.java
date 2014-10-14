@@ -36,16 +36,16 @@ public class InflictDamageRenderObject extends EntityRenderObject
 	@Override
 	public void render(Graphics g)
 	{
-		Color pushColor = g.getColor();
-		Color textColor = new Color(1.0f, 0, 0, alpha);
-		g.setColor(textColor);
-		float unitW = (Integer)(getOwner().getParam(UnitParameter.WIDTH())) * getGameFieldView().getCellWidth();
-		String text = Integer.toString(damage);
-		Font f = g.getFont();
-		float stringW = f.getWidth(text);
-		float xOffset = (unitW - stringW) / 2;
-		g.drawString(text, getOwnerX() + xOffset, getOwnerY() + yOffset);
-		g.setColor(pushColor);
+//		Color pushColor = g.getColor();
+//		Color textColor = new Color(1.0f, 0, 0, alpha);
+//		g.setColor(textColor);
+//		float unitW = (Integer)(getOwner().getParam(UnitParameter.WIDTH())) * getGameFieldView().getCellWidth();
+//		String text = Integer.toString(damage);
+//		Font f = g.getFont();
+//		float stringW = f.getWidth(text);
+//		float xOffset = (unitW - stringW) / 2;
+//		g.drawString(text, getOwnerX() + xOffset, getOwnerY() + yOffset);
+//		g.setColor(pushColor);
 	}
 
 }

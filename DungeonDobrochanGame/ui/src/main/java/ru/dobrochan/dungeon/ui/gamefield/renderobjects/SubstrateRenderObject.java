@@ -30,7 +30,7 @@ public class SubstrateRenderObject extends EntityRenderObject
 	@Override
 	public void render(Graphics g)
 	{
-		g.drawImage(image, getOwnerX(), getOwnerY(), color);
+		g.drawImage(image, getOwnerPos().getX(), getOwnerPos().getY(), color);
 	}
 
 	@Override

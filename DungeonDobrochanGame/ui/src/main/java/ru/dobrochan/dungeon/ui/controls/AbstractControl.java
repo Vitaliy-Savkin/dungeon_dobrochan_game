@@ -24,9 +24,9 @@ public abstract class AbstractControl extends AbstractComponent {
 
 	public void setEnabled(boolean enabled) {
 		this.disabled = !enabled;
-	}	
+	}
 
-	public boolean isVisible() {
+    public boolean isVisible() {
 		return visible;
 	}
 
@@ -211,20 +211,22 @@ public abstract class AbstractControl extends AbstractComponent {
 	}
 	
 	public final void keyPressed(int key, char c)	{
-		keyPressedHandler.invoke(this, new KeyEventArgs(key, c));
+        if(isAcceptingInput())
+		    keyPressedHandler.invoke(this, new KeyEventArgs(key, c));
 	}
 	
 	public final void keyReleased(int key, char c) 	{
-		keyReleasedHandler.invoke(this, new KeyEventArgs(key, c));
+        if(isAcceptingInput())
+		    keyReleasedHandler.invoke(this, new KeyEventArgs(key, c));
 	}
 	
 	public final void mouseClicked(int button, int x, int y, int clickCount){
-		if(inBounds(x, y))
+		if(isAcceptingInput() && inBounds(x, y))
 			mouseClickedHandler.invoke(this, new MouseClickedEventArgs(button, x, y, clickCount));		
 	}
 	
 	public final void mouseDragged(int oldx, int oldy, int newx, int newy) {
-		if(inBounds(oldx, oldy) || inBounds(newx, newy))
+		if(isAcceptingInput() && inBounds(oldx, oldy) || inBounds(newx, newy))
 			mouseDraggedHandler.invoke(this, new MouseMovedEventArgs(oldx, oldy, newx, newy));
 	}
 	
@@ -234,17 +236,18 @@ public abstract class AbstractControl extends AbstractComponent {
 	}
 	
 	public final void mousePressed(int button, int x, int y) {
-		if(inBounds(x, y))
+		if(isAcceptingInput() && inBounds(x, y))
 			mousePressedHandler.invoke(this, new MouseButtonEventArgs(button, x, y));		
 	}
 	
 	public final void mouseReleased(int button, int x, int y) {
-		if(inBounds(x, y))
+		if(isAcceptingInput() && inBounds(x, y))
 			mouseReleasedHandler.invoke(this, new MouseButtonEventArgs(button, x, y));		
 	}
 	
 	public final void mouseWheelMoved(int change){
-		mouseWheelMovedHandler.invoke(this, new MouseWheelEventArgs(change));	
+        if(isAcceptingInput())
+		    mouseWheelMovedHandler.invoke(this, new MouseWheelEventArgs(change));
 	}
 }
 
